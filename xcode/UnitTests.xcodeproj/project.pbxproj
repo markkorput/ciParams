@@ -50,6 +50,8 @@
 		4D42D3AE1ED9A69E00C70CE8 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = ../tests/catch.hpp; sourceTree = "<group>"; };
 		4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterInterface.h; sourceTree = "<group>"; };
 		4D42D3B11ED9A73A00C70CE8 /* ciParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ciParams.h; sourceTree = "<group>"; };
+		4D42D3B21ED9AE4800C70CE8 /* ParameterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterBase.h; sourceTree = "<group>"; };
+		4D42D3B31ED9B0CB00C70CE8 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
 		4DA3B7621DDD110000B38112 /* slitDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = slitDraw.hpp; path = ../src/slitDraw.hpp; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		6E8118130C2B4ADCA23B5B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +172,8 @@
 		4D42D3AF1ED9A73A00C70CE8 /* ciParams */ = {
 			isa = PBXGroup;
 			children = (
+				4D42D3B31ED9B0CB00C70CE8 /* Parameter.h */,
+				4D42D3B21ED9AE4800C70CE8 /* ParameterBase.h */,
 				4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */,
 			);
 			path = ciParams;

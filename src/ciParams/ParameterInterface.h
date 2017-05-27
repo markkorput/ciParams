@@ -1,5 +1,7 @@
+#pragma once
+
 #include "cinder/app/App.h"
-#include "cinder/Signals.h"
+
 
 namespace params {
     template<class T>
@@ -20,8 +22,8 @@ namespace params {
                 }
             }
 
-            const T* getParameter() const { return pParam; }
-            void setParameter(T& param){ pParam = &param; }
+            const T* getVar() const { return pParam; }
+            void setVar(T& param){ pParam = &param; }
 
         public:
             ci::signals::Signal<void(const T&)> onChange;

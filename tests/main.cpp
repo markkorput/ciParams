@@ -12,27 +12,61 @@ TEST_CASE("params::ParameterInterface", "")
     SECTION("get and set"){
         string p1 = "value1";
         ParameterInterface<string> pi(p1);
-        REQUIRE(pi.getParameter() == &p1);
+        REQUIRE(pi.getVar() == &p1);
         REQUIRE(pi.get() == "value1");
-        
+
         string p2 = "value_2";
-        pi.setParameter(p2);
-        REQUIRE(pi.getParameter() == &p2);
+        pi.setVar(p2);
+        REQUIRE(pi.getVar() == &p2);
         REQUIRE(pi.get() == "value_2");
-        
+
         pi.set("value#3");
         REQUIRE(pi.get() == "value#3");
         REQUIRE(p2 == "value#3");
     }
-    
+
     SECTION("change callback"){
         float p1 = 100.0, p2 = 0.0f;
         ParameterInterface<float> pi(p1);
         pi.onChange.connect([&p2](const float& value){
             p2 = value*2.0f;
         });
-        
+
         pi.set(20.0f);
         REQUIRE(p2 == 40.0f);
+    }
+}
+
+TEST_CASE("params::ParameterBase", ""){
+    SECTION("has embedded variable instance"){
+        ParameterBase<int> intParam;
+        int dummy;
+
+        intParam.onChange.connect([&dummy](const int& val){
+            dummy = val*2;
+        });
+
+        intParam.set(6);
+        REQUIRE(dummy == 12);
+    }
+}
+
+TEST_CASE("params::Parameter", ""){
+    SECTION("transform"){
+        Parameter<float> param;
+        float var;
+        
+        param.set(5.5f);
+
+        param.transform([&var](const float& val){
+            var = val * 2.0f;
+        });
+
+        // already called by transform
+        REQUIRE(var == 11.0f);
+
+        // registers active change listener
+        param.set(1.2f);
+        REQUIRE(var == 2.4f);
     }
 }
