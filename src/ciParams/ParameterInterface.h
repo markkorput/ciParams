@@ -1,23 +1,34 @@
 #include "cinder/app/App.h"
-
-using namespace ci;
-using namespace ci::app;
-using namespace std;
+#include "cinder/Signals.h"
 
 namespace params {
     template<class T>
     class ParameterInterface {
-    public:
-        ParameterInterface() : pParam(NULL){}
-        ParameterInterface(T& param) : pParam(&param){}
-        
-        const T& get() const { return *pParam; }
-        void set(const T& newValue){ *pParam = newValue; }
+        public:
+            
+            ParameterInterface() : pParam(NULL){}
+            ParameterInterface(T& param) : pParam(&param){}
+            
+            const T& get() const { return *pParam; }
+            void set(const T& newValue){
+                T previousValue = *pParam;
+                
+                *pParam = newValue;
+                
+                if(previousValue != newValue){
+                    onChange.emit(newValue);
+                }
+            }
 
-        const T* getParameter() const { return pParam; }
-        void setParameter(T& param){ pParam = &param; }
-    private:
-        T* pParam;
+            const T* getParameter() const { return pParam; }
+            void setParameter(T& param){ pParam = &param; }
+
+        public:
+            ci::signals::Signal<void(const T&)> onChange;
+        
+        private:
+            T* pParam;
+        
     };
 }
 

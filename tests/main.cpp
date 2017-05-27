@@ -3,14 +3,13 @@
 
 #include "ciParams.h"
 
-using namespace ci;
+using namespace std;
 using namespace params;
-//using namespace std;
+
 
 TEST_CASE("params::ParameterInterface", "")
 {
-    SECTION("get and set")
-    {
+    SECTION("get and set"){
         string p1 = "value1";
         ParameterInterface<string> pi(p1);
         REQUIRE(pi.getParameter() == &p1);
@@ -24,5 +23,16 @@ TEST_CASE("params::ParameterInterface", "")
         pi.set("value#3");
         REQUIRE(pi.get() == "value#3");
         REQUIRE(p2 == "value#3");
+    }
+    
+    SECTION("change callback"){
+        float p1 = 100.0, p2 = 0.0f;
+        ParameterInterface<float> pi(p1);
+        pi.onChange.connect([&p2](const float& value){
+            p2 = value*2.0f;
+        });
+        
+        pi.set(20.0f);
+        REQUIRE(p2 == 40.0f);
     }
 }
