@@ -78,3 +78,21 @@ template<>
 std::string params::Parameter<bool>::serialize(){
     return std::to_string(this->get());
 }
+
+template<>
+bool params::Parameter<ci::vec3>::canSerialize(){ return true; }
+
+template<>
+std::string params::Parameter<ci::vec3>::serialize(){
+    ci::vec3 val=this->get();
+    return std::to_string(val.x) + "," + std::to_string(val.y) + "," + std::to_string(val.z);
+}
+
+template<>
+bool params::Parameter<ci::Color>::canSerialize(){ return true; }
+
+template<>
+std::string params::Parameter<ci::Color>::serialize(){
+    ci::Color val=this->get();
+    return std::to_string(val.r) + "," + std::to_string(val.g) + "," + std::to_string(val.b);
+}

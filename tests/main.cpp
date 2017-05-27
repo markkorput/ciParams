@@ -114,5 +114,17 @@ TEST_CASE("params::Parameter", ""){
             param.set(false);
             REQUIRE(param.serialize() == "0");
         }
+        {
+            Parameter<ci::vec3> param;
+            param.set(ci::vec3(1.0,2.0,3.0));
+            REQUIRE(param.canSerialize());
+            REQUIRE(param.serialize() == "1.000000,2.000000,3.000000");
+        }
+        {
+            Parameter<ci::Color> param;
+            param.set(ci::Color(1.0,2.0,3.0));
+            REQUIRE(param.canSerialize());
+            REQUIRE(param.serialize() == "1.000000,2.000000,3.000000");
+        }
     }
 }
