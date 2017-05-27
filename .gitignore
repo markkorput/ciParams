@@ -1,4 +1,5 @@
 xcode/build
+<<<<<<< HEAD
 
 # Prerequisites
 *.d
@@ -32,3 +33,5 @@ xcode/build
 *.exe
 *.out
 *.app
+=======
+>>>>>>> unit tests project
