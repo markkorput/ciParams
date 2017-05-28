@@ -4,7 +4,11 @@ using namespace params;
 
 bool ParameterGroupBaseJsonDeserializer::deserialize(const std::string& jsonText){
     ci::JsonTree jsonTree(jsonText);
-    return deserialize(jsonTree);
+    if(rootGroup->getName() == "" || !jsonTree.hasChild(rootGroup->getName()))
+        return deserialize(jsonTree);
+
+    ci::JsonTree subTree = jsonTree[rootGroup->getName()];
+    return deserialize(subTree);
 }
 
 bool ParameterGroupBaseJsonDeserializer::deserialize(ci::JsonTree& jsonTree){
@@ -16,7 +20,7 @@ bool ParameterGroupBaseJsonDeserializer::deserialize(ci::JsonTree& jsonTree){
                 allGood &= itemRef->param->deserialize(jsonTree.getValueForKey(itemRef->param->getName()));
             }
         }
-        
+
         if(itemRef->group){
             if(jsonTree.hasChild(itemRef->group->getName())){
                 allGood &= ParameterGroupBaseJsonDeserializer(*itemRef->group)

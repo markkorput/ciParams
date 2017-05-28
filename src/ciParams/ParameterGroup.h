@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cinder/DataSource.h"
 #include "cinder/Log.h"
 #include <stdio.h>
 
@@ -16,8 +17,18 @@ namespace params {
             return ParameterGroupBaseJsonSerializer(*this).getJson();
         }
 
-        bool fromJson(std::string jsonText){
+        bool loadJson(std::string jsonText){
             return ParameterGroupBaseJsonDeserializer(*this).deserialize(jsonText);
+        }
+
+        bool loadJson(ci::DataSourceRef dataSourceRef){
+            CI_LOG_I("loadJson from: " << dataSourceRef->getFilePath());
+            string s( static_cast<const char*>( dataSourceRef->getBuffer()->getData() ));
+            if(s.length() > dataSourceRef->getBuffer()->getSize()){
+                s.resize( dataSourceRef->getBuffer()->getSize() );
+            }
+            CI_LOG_I("json from file: " + s);
+            return loadJson(s);
         }
     };
 }

@@ -3,6 +3,7 @@
 #include <memory>
 #include <functional>
 #include "cinder/Signals.h"
+#include "cinder/Log.h"
 #include "ParameterInterface.h"
 #include "ParameterBase.h"
 
@@ -69,6 +70,7 @@ std::string params::Parameter<float>::serialize() const {
 
 template<>
 bool params::Parameter<float>::deserialize(const std::string& value){
+    // CI_LOG_I(getName()+" : "+value);
     this->set(std::stof(value));
     return true;
 }

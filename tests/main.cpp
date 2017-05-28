@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+#include "cinder/Log.h"
 #include "ciParams.h"
 
 using namespace std;
@@ -151,7 +152,7 @@ TEST_CASE("params::ParameterGroup", ""){
 }\n");
     }
 
-    SECTION("fromJson"){
+    SECTION("loadJson"){
         ParameterGroup paramGroup, subGroup;
         Parameter<float> floatP1, floatP2;
         Parameter<string> stringP1, stringP2;
@@ -173,11 +174,41 @@ TEST_CASE("params::ParameterGroup", ""){
    \"pos\" : \"11.000000,22.000000,33.000000\",\n\
    \"s1\" : \"empty\"\n\
 }\n";
-        REQUIRE(paramGroup.fromJson(json));
+        REQUIRE(paramGroup.loadJson(json));
         REQUIRE(floatP1.get() == 1.0f);
         REQUIRE(floatP2.get() == 10.0f);
         REQUIRE(stringP1.get() == "empty");
         REQUIRE(stringP2.get() == "empty#2");
         REQUIRE(vec3P1.get() == ci::vec3(11.0f,22.0f,33.0f));
+    }
+
+    SECTION("loadJson"){
+        ParameterGroup paramGroup, subGroup;
+        Parameter<float> floatP1, floatP2;
+        Parameter<string> stringP1, stringP2;
+        Parameter<ci::vec3> vec3P1;
+
+        paramGroup.add(floatP1.init("num1", 0.0f));
+        paramGroup.add(subGroup.init("groupo1"));
+        paramGroup.add(stringP1.init("s1", ""));
+        paramGroup.add(vec3P1.init("pos", ci::vec3(0.0f)));
+        subGroup.add(stringP2.init("s2", ""));
+        subGroup.add(floatP2.init("num2", 0.0f));
+
+        CI_LOG_I("getAssetPath: " << ci::app::getAssetPath("params.json"));
+        REQUIRE(paramGroup.loadJson(ci::app::loadAsset("params.json")));
+        REQUIRE(floatP1.get() == 1.0f);
+        REQUIRE(floatP2.get() == 10.0f);
+        REQUIRE(stringP1.get() == "empty");
+        REQUIRE(stringP2.get() == "empty#2");
+        REQUIRE(vec3P1.get() == ci::vec3(11.0f,22.0f,33.0f));
+        
+        paramGroup.setName("RootGroup");
+        REQUIRE(paramGroup.loadJson(ci::app::loadAsset("params2.json")));
+        REQUIRE(floatP1.get() == 5.0f);
+        REQUIRE(floatP2.get() == 22.0f);
+        REQUIRE(stringP1.get() == "empty_");
+        REQUIRE(stringP2.get() == "empty##2");
+        REQUIRE(vec3P1.get() == ci::vec3(22.0f,44.0f,66.0f));
     }
 }
