@@ -12,6 +12,7 @@ namespace params {
             ParameterInterface(T& param) : pParam(&param){}
             
             const T& get() const { return *pParam; }
+
             void set(const T& newValue){
                 T previousValue = *pParam;
                 

@@ -120,13 +120,31 @@ TEST_CASE("params::ParameterGroup", ""){
         ParameterGroup paramGroup, subGroup;
         Parameter<float> floatP1, floatP2;
         Parameter<string> stringP1, stringP2;
-        
-        paramGroup.add(floatP1);
-        paramGroup.add(subGroup);
-        paramGroup.add(stringP1);
-        subGroup.add(stringP2);
-        subGroup.add(floatP2);
-        
-        
+
+        paramGroup.add(floatP1.init("num1", 1.0f));
+        paramGroup.add(subGroup.init("groupo1"));
+        paramGroup.add(stringP1.init("s1", "empty"));
+        subGroup.add(stringP2.init("s2", "empty#2"));
+        subGroup.add(floatP2.init("num2", 10.0f));
+        REQUIRE(paramGroup.toJson() == "{\n\
+   \"groupo1\" : {\n\
+      \"num2\" : \"10.000000\",\n\
+      \"s2\" : \"empty#2\"\n\
+   },\n\
+   \"num1\" : \"1.000000\",\n\
+   \"s1\" : \"empty\"\n\
+}\n");
+        paramGroup.setName("RootGroup");
+        REQUIRE(paramGroup.toJson() == "{\n\
+   \"RootGroup\" : {\n\
+      \"groupo1\" : {\n\
+         \"num2\" : \"10.000000\",\n\
+         \"s2\" : \"empty#2\"\n\
+      },\n\
+      \"num1\" : \"1.000000\",\n\
+      \"s1\" : \"empty\"\n\
+   }\n\
+}\n");
+
     }
 }
