@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1F45D81ED9C83E0042C379 /* ParameterGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */; };
 		4D42D3AD1ED9A65500C70CE8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D42D3AC1ED9A65500C70CE8 /* main.cpp */; };
+		4DAA8C521EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA8C501EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.cpp */; };
+		4DAA8C551EDB4D7300AC777A /* ParameterGroupBaseJsonDeserializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA8C541EDB4D7300AC777A /* ParameterGroupBaseJsonDeserializer.cpp */; };
 		9CC02E8F1BDE75EF00B5058A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720219952D00008149E2 /* AVFoundation.framework */; };
 		9CC02E901BDE75F600B5058A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720319952D00008149E2 /* CoreMedia.framework */; };
 		9CC02E921BDE75FE00B5058A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC02E911BDE75FE00B5058A /* Cocoa.framework */; };
@@ -46,11 +49,20 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4D1F45D31ED9C6A60042C379 /* ParameterGroupBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterGroupBase.h; sourceTree = "<group>"; };
+		4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterGroup.cpp; sourceTree = "<group>"; };
+		4D1F45D71ED9C83E0042C379 /* ParameterGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterGroup.h; sourceTree = "<group>"; };
 		4D42D3AC1ED9A65500C70CE8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../tests/main.cpp; sourceTree = "<group>"; };
 		4D42D3AE1ED9A69E00C70CE8 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = ../tests/catch.hpp; sourceTree = "<group>"; };
 		4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterInterface.h; sourceTree = "<group>"; };
 		4D42D3B11ED9A73A00C70CE8 /* ciParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ciParams.h; sourceTree = "<group>"; };
+		4D42D3B21ED9AE4800C70CE8 /* ParameterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterBase.h; sourceTree = "<group>"; };
+		4D42D3B31ED9B0CB00C70CE8 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
 		4DA3B7621DDD110000B38112 /* slitDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = slitDraw.hpp; path = ../src/slitDraw.hpp; sourceTree = "<group>"; };
+		4DAA8C501EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterGroupBaseJsonSerializer.cpp; sourceTree = "<group>"; };
+		4DAA8C511EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterGroupBaseJsonSerializer.h; sourceTree = "<group>"; };
+		4DAA8C531EDB4D4900AC777A /* ParameterGroupBaseJsonDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterGroupBaseJsonDeserializer.h; sourceTree = "<group>"; };
+		4DAA8C541EDB4D7300AC777A /* ParameterGroupBaseJsonDeserializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterGroupBaseJsonDeserializer.cpp; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		6E8118130C2B4ADCA23B5B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CC02E801BDE74AA00B5058A /* CinderUnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CinderUnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +182,16 @@
 		4D42D3AF1ED9A73A00C70CE8 /* ciParams */ = {
 			isa = PBXGroup;
 			children = (
+				4D42D3B31ED9B0CB00C70CE8 /* Parameter.h */,
+				4D42D3B21ED9AE4800C70CE8 /* ParameterBase.h */,
 				4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */,
+				4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */,
+				4D1F45D71ED9C83E0042C379 /* ParameterGroup.h */,
+				4D1F45D31ED9C6A60042C379 /* ParameterGroupBase.h */,
+				4DAA8C541EDB4D7300AC777A /* ParameterGroupBaseJsonDeserializer.cpp */,
+				4DAA8C531EDB4D4900AC777A /* ParameterGroupBaseJsonDeserializer.h */,
+				4DAA8C501EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.cpp */,
+				4DAA8C511EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.h */,
 			);
 			path = ciParams;
 			sourceTree = "<group>";
@@ -251,6 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D42D3AD1ED9A65500C70CE8 /* main.cpp in Sources */,
+				4DAA8C551EDB4D7300AC777A /* ParameterGroupBaseJsonDeserializer.cpp in Sources */,
+				4D1F45D81ED9C83E0042C379 /* ParameterGroup.cpp in Sources */,
+				4DAA8C521EDB4C5800AC777A /* ParameterGroupBaseJsonSerializer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
