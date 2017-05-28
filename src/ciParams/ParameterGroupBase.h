@@ -46,7 +46,7 @@ namespace params {
             itemRefs.push_back(itemRef);
         }
 
-        const std::vector<shared_ptr<Item>>& getItems() const {
+        std::vector<shared_ptr<Item>>& getItems(){
             return itemRefs;
         }
 

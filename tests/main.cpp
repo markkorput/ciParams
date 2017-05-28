@@ -116,14 +116,16 @@ TEST_CASE("params::Parameter", ""){
 }
 
 TEST_CASE("params::ParameterGroup", ""){
-    SECTION(""){
+    SECTION("toJson"){
         ParameterGroup paramGroup, subGroup;
         Parameter<float> floatP1, floatP2;
         Parameter<string> stringP1, stringP2;
+        Parameter<ci::vec3> vec3P1;
 
         paramGroup.add(floatP1.init("num1", 1.0f));
         paramGroup.add(subGroup.init("groupo1"));
         paramGroup.add(stringP1.init("s1", "empty"));
+        paramGroup.add(vec3P1.init("pos", ci::vec3(11.0f,22.0f,33.0f)));
         subGroup.add(stringP2.init("s2", "empty#2"));
         subGroup.add(floatP2.init("num2", 10.0f));
         REQUIRE(paramGroup.toJson() == "{\n\
@@ -132,6 +134,7 @@ TEST_CASE("params::ParameterGroup", ""){
       \"s2\" : \"empty#2\"\n\
    },\n\
    \"num1\" : \"1.000000\",\n\
+   \"pos\" : \"11.000000,22.000000,33.000000\",\n\
    \"s1\" : \"empty\"\n\
 }\n");
         paramGroup.setName("RootGroup");
@@ -142,9 +145,39 @@ TEST_CASE("params::ParameterGroup", ""){
          \"s2\" : \"empty#2\"\n\
       },\n\
       \"num1\" : \"1.000000\",\n\
+      \"pos\" : \"11.000000,22.000000,33.000000\",\n\
       \"s1\" : \"empty\"\n\
    }\n\
 }\n");
+    }
 
+    SECTION("fromJson"){
+        ParameterGroup paramGroup, subGroup;
+        Parameter<float> floatP1, floatP2;
+        Parameter<string> stringP1, stringP2;
+        Parameter<ci::vec3> vec3P1;
+
+        paramGroup.add(floatP1.init("num1", 0.0f));
+        paramGroup.add(subGroup.init("groupo1"));
+        paramGroup.add(stringP1.init("s1", ""));
+        paramGroup.add(vec3P1.init("pos", ci::vec3(0.0f)));
+        subGroup.add(stringP2.init("s2", ""));
+        subGroup.add(floatP2.init("num2", 0.0f));
+
+        std::string json = "{\n\
+   \"groupo1\" : {\n\
+      \"num2\" : \"10.000000\",\n\
+      \"s2\" : \"empty#2\"\n\
+   },\n\
+   \"num1\" : \"1.000000\",\n\
+   \"pos\" : \"11.000000,22.000000,33.000000\",\n\
+   \"s1\" : \"empty\"\n\
+}\n";
+        REQUIRE(paramGroup.fromJson(json));
+        REQUIRE(floatP1.get() == 1.0f);
+        REQUIRE(floatP2.get() == 10.0f);
+        REQUIRE(stringP1.get() == "empty");
+        REQUIRE(stringP2.get() == "empty#2");
+        REQUIRE(vec3P1.get() == ci::vec3(11.0f,22.0f,33.0f));
     }
 }
