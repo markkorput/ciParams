@@ -37,20 +37,6 @@ TEST_CASE("params::ParameterInterface", "")
     }
 }
 
-TEST_CASE("params::ParameterBase", ""){
-    SECTION("has embedded variable instance"){
-        ParameterBase<int> intParam;
-        int dummy;
-
-        intParam.onChange.connect([&dummy](const int& val){
-            dummy = val*2;
-        });
-
-        intParam.set(6);
-        REQUIRE(dummy == 12);
-    }
-}
-
 TEST_CASE("params::Parameter", ""){
     SECTION("transform"){
         Parameter<float> param;
@@ -126,5 +112,21 @@ TEST_CASE("params::Parameter", ""){
             REQUIRE(param.canSerialize());
             REQUIRE(param.serialize() == "1.000000,2.000000,3.000000");
         }
+    }
+}
+
+TEST_CASE("params::ParameterGroup", ""){
+    SECTION(""){
+        ParameterGroup paramGroup, subGroup;
+        Parameter<float> floatP1, floatP2;
+        Parameter<string> stringP1, stringP2;
+        
+        paramGroup.add(floatP1);
+        paramGroup.add(subGroup);
+        paramGroup.add(stringP1);
+        subGroup.add(stringP2);
+        subGroup.add(floatP2);
+        
+        
     }
 }

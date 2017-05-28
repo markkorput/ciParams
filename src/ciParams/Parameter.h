@@ -3,17 +3,25 @@
 #include <memory>
 #include <functional>
 #include "cinder/Signals.h"
+#include "ParameterInterface.h"
 #include "ParameterBase.h"
 
 namespace params {
     template<class T>
-    class Parameter : public ParameterBase<T> {
+    class Parameter : public ParameterBase, public ParameterInterface<T> {
     public:
 
         typedef std::function<void(const T&)> TransformFunc;
 
     public:
 
+        Parameter(){
+            // use private variable instance for all ParameterInterface logic
+            this->setVar(myVar);
+        }
+
+        /// Use the given function to transform the value of the parameters. The transformer
+        /// is invoked for the current value as well as -if active is true- all future values
         ci::signals::Connection transform(TransformFunc func, bool active=true){
             func(this->get());
             auto connection = this->onChange.connect(func);
@@ -23,9 +31,13 @@ namespace params {
 
             return connection;
         }
+        
+        virtual bool canSerialize(){ return false; }
+        virtual std::string serialize(){ return ""; }
+        virtual bool deserialize(const std::string& value){ return false; }
 
-        bool canSerialize(){ return false; }
-        std::string serialize(){ return ""; }
+    private:
+        T myVar;
     };
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1F45D81ED9C83E0042C379 /* ParameterGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */; };
 		4D42D3AD1ED9A65500C70CE8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D42D3AC1ED9A65500C70CE8 /* main.cpp */; };
 		9CC02E8F1BDE75EF00B5058A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720219952D00008149E2 /* AVFoundation.framework */; };
 		9CC02E901BDE75F600B5058A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720319952D00008149E2 /* CoreMedia.framework */; };
@@ -46,6 +47,9 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4D1F45D31ED9C6A60042C379 /* ParameterGroupBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterGroupBase.h; sourceTree = "<group>"; };
+		4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterGroup.cpp; sourceTree = "<group>"; };
+		4D1F45D71ED9C83E0042C379 /* ParameterGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterGroup.h; sourceTree = "<group>"; };
 		4D42D3AC1ED9A65500C70CE8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../tests/main.cpp; sourceTree = "<group>"; };
 		4D42D3AE1ED9A69E00C70CE8 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = ../tests/catch.hpp; sourceTree = "<group>"; };
 		4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterInterface.h; sourceTree = "<group>"; };
@@ -175,6 +179,9 @@
 				4D42D3B31ED9B0CB00C70CE8 /* Parameter.h */,
 				4D42D3B21ED9AE4800C70CE8 /* ParameterBase.h */,
 				4D42D3B01ED9A73A00C70CE8 /* ParameterInterface.h */,
+				4D1F45D61ED9C83E0042C379 /* ParameterGroup.cpp */,
+				4D1F45D71ED9C83E0042C379 /* ParameterGroup.h */,
+				4D1F45D31ED9C6A60042C379 /* ParameterGroupBase.h */,
 			);
 			path = ciParams;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D42D3AD1ED9A65500C70CE8 /* main.cpp in Sources */,
+				4D1F45D81ED9C83E0042C379 /* ParameterGroup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

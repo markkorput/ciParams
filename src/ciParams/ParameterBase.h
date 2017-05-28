@@ -3,14 +3,16 @@
 #include "ParameterInterface.h"
 
 namespace params {
-    template<class T>
-    class ParameterBase : public ParameterInterface<T> {
+    class ParameterBase {
     public:
-        ParameterBase(){
-            this->setVar(myVar);
-        }
+        const std::string& getName() const { return name; }
+        void setName(const std::string& newName){ name = newName; }
+
+        virtual bool canSerialize() const { return false; }
+        virtual std::string serialize() const { return ""; }
+        virtual bool deserialize(const std::string& value){ return false; }
 
     private:
-        T myVar;
+        std::string name;
     };
 }
